@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pierre Haou</title>
+    <link>https://pierrehaou.github.io/</link>
+    <description>Recent content on Pierre Haou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 30 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://pierrehaou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First post coming soon!</title>
+      <link>https://pierrehaou.github.io/blog/first_blog/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://pierrehaou.github.io/blog/first_blog/</guid>
+      <description>My first post is coming soon, for now enjoy one of my fav youtube videos!</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://pierrehaou.github.io/projects/</link>
+      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://pierrehaou.github.io/projects/</guid>
+      <description>//AR Dragon Blitzkrieg //SpaceInvaders Check out some of my other projects!</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://pierrehaou.github.io/about/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://pierrehaou.github.io/about/</guid>
+      <description>Have worn plenty of hats, currently a computer science undergrad at Oregon State and will be doing software engineering at Tableau this summer.
+Previously:
+ Software @ Better.com Strategic communications and Public Involvement @ City of Portland Graduated from the University of Oregon in 2019 with a BA in Political Science Diversity, Equity, and Inclusion @ Metro (regional government in Oregon) Youth advocacy @ Immigrant and Refugee Organization  My interests:</description>
+    </item>
+    
+  </channel>
+</rss>
