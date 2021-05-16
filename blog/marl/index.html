@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Pierre Haou">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pierrehaou.github.io/img/favicon.ico">
+    <title>Multi-Agent Reinforcement Learning (MARL) and Cooperative AI | Pierre Haou</title>
+    <meta name="description" content="Agents play hide and seek in OpenAI’s Emergent Tool Use from Multi-Agent Interaction. Gif by OpenAI.
+Multi-Agent Reinforcement Learning (MARL) is a subfield of reinforcement learning that is becoming increasingly relevant and has been blowing my mind (see gif and link above). It has found incredible success in popular strategy games and will be key to the continued advancement of several emerging technologies, communication between different autonomous vehicles being one such example.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <link rel="preload stylesheet" href="/css/main.min.css" as="style">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old">
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <div id="content">
+  
+  <div class="container mb-3">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://pierrehaou.github.io/">
+        <i class="fa fa-home"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/about/">ABOUT</a></li>
+              </li>
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/blog/">BLOG</a></li>
+              </li>
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/projects/">PROJECTS</a></li>
+              </li>
+            
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <h3 class="mt-3"><b><a href="https://pierrehaou.github.io/blog/marl/">Multi-Agent Reinforcement Learning (MARL) and Cooperative AI</a></b></h3>
+    <div class="blog-title my-4">
+      <h6>
+        May 15, 2021
+        &nbsp;&nbsp;
+        
+      </h6>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="blogpost">
+          <p><img src="/img/emergenttooluse.gif" alt="Agents play hide and seek in OpenAI’s Emergent Tool Use from Multi-Agent Interaction. Gif by OpenAI."></p>
+<p><em>Agents play hide and seek in OpenAI’s <a href="https://openai.com/blog/emergent-tool-use/">Emergent Tool Use from Multi-Agent Interaction</a>. Gif by OpenAI.</em></p>
+<p>Multi-Agent Reinforcement Learning (MARL) is a subfield of reinforcement learning that is becoming increasingly relevant and has been blowing my mind (see gif and link above). It has found incredible success in popular <a href="https://openai.com/projects/five/">strategy games</a> and will be key to the continued advancement of several emerging technologies, communication between different autonomous vehicles being one such example. This post will first discuss what this subfield is, how it relates to Cooperative AI, and then quickly move onto the monumental impact these fields of study are poised to have in the future.</p>
+<h4 id="what-is-multi-agent-reinforcement-learning">What is Multi-Agent Reinforcement Learning?</h4>
+<p><strong>Vanilla reinforcement learning</strong> is concerned with a single agent, in an environment, seeking to maximize the total reward in that environment. You can imagine—or just view this <a href="https://www.youtube.com/watch?v=gn4nRCC9TwQ&amp;ab_channel=TechInsider">video</a>—a robot learning to walk, where its overall goal is to walk without falling. It receives rewards for taking steps without falling over, and through trial and error, and maximizing these rewards, the robot eventually learns to walk. In this context, we have a <em>single</em> agent seeking to accomplish a goal through maximizing total rewards.</p>
+<p><strong>Multi-agent reinforcement learning</strong> studies how multiple agents interact in a common environment. That is, when these agents interact with the environment and one another, can we observe them collaborate, coordinate, compete, or collectively learn to accomplish a particular task. It can be further broken down into three broad categories:</p>
+<ul>
+<li>Cooperative: All agents working towards a common goal</li>
+<li>Competitive: Agents competing with one another to accomplish a goal</li>
+<li>Some mix of the two: Think a 5v5 basketball game, where individuals on the same team are coordinating with one another, but the two teams are competing against one another.</li>
+</ul>
+<p>A canonical example of MARL is a swarm of robots seeking to rescue an individual. Each robot has only partial observability of its environment (they can only see a small patch of land below them) therefore the robots need to coordinate with one another to rescue the individual.</p>
+<p>Here, we can see the barrier between science fiction and reality quickly dissolve. You are likely already imagining teams of robots building homes, autonomous vehicles seamlessly interacting with another, or distributed resource management.</p>
+<h4 id="large-scale-cooperation">Large Scale Cooperation</h4>
+<p>Cooperation at scale is a key ingredient to the incredible success of our species, homo sapiens. It is through humanity’s collective intelligence and collaboration that we have been able to accomplish unbelievable feats. To achieve large scale cooperation, we have created mechanisms that enable collaboration at scale. That is, we have created protocols (belief systems, systems of government, etc.) to induce large scale cooperation so that one feels comfortable collaborating with total strangers. Many of humanity’s failures and existential threats can be viewed as a coordination or collaboration issue (nuclear arms race, climate change, world wars etc.). How might MARL be used to solve these coordination issues? Enter <a href="https://deepmind.com/research/publications/Open-Problems-in-Cooperative-AI">Cooperative AI</a>.</p>
+<h4 id="cooperative-ai">Cooperative AI</h4>
+<p>Cooperative AI is a class of problems within artificial intelligence that seek to use AI to solve or contribute to solving problems of cooperation. This research is focused on (1) Building AI with the capability to cooperate and (2) Creating AI that can be used to foster cooperation in populations (both machine and human).</p>
+<p>Humanity’s success largely depends on our ability to cooperate with another, if AI can one day be used to improve cooperation between humans this could lead to incredible advancements in human progress and the mitigation of human suffering.</p>
+<p>AI could be used to supercharge humanity’s superpower—large scale cooperation. Given this framework, it is not farfetched to imagine AI being used to help negotiate peace treaties, creating more robust and fair forms of government, or helping humans cooperate with one another to avoid existential disasters (climate change, pandemics, nuclear holocaust). In fact, this kind of research already exists, recently the multi-agent system framework was used to <a href="https://blog.einstein.ai/the-ai-economist/">design tax policy</a>.</p>
+<p>Multi Agent Reinforcement Learning along with other disciplines (game theory, natural language processing, multi agent design, etc.) are the tools that will be leveraged to solve these problems that exist in Cooperative AI. Here is another example of <a href="https://deepmind.com/blog/article/understanding-agent-cooperation">research</a> being conducted on this class of problems within the framework of MARL.</p>
+<h4 id="want-to-learn-more">Want to learn more?</h4>
+<p>If you’re interested in learning more about Cooperative AI, I’d recommend reading <a href="https://deepmind.com/research/publications/Open-Problems-in-Cooperative-AI">Open Problems in Cooperative AI</a>. Have I convinced to start poking around in MARL? This <a href="https://github.com/LantaoYu/MARL-Papers">github repo</a> provides a nice collection of MARL research papers. Drooling at the mouth to conduct your very own MARL experiments? Check out <a href="https://www.pettingzoo.ml/">PettingZoo</a>!</p>
+<p>References</p>
+<p>[1]: Y. Harari, <a href="https://www.ynharari.com/book/sapiens-2/">Sapiens</a> (2015)</p>
+<p>[2]: Allan Dafoe and Edward Hughes and Yoram Bachrach and Tantum Collins and Kevin R. McKee and Joel Z. Leibo and Kate Larson and Thore Graepel, Open Problems in Cooperative AI (2020), <a href="https://arxiv.org/abs/2012.08630">https://arxiv.org/abs/2012.08630</a></p>
+<p>[3]: Improbable AI. (2021, April 12). CSL seminar: Jakob Foerster​​ [Video]. YouTube. <a href="https://www.youtube.com/watch?v=ii_SwIsY8aU&amp;ab_channel=ImprobableAI">https://www.youtube.com/watch?v=ii_SwIsY8aU&amp;ab_channel=ImprobableAI</a></p>
+<p>[4]: P. Barekatin, <a href="https://www.quora.com/What-is-multi-agent-reinforcement-learning">https://www.quora.com/What-is-multi-agent-reinforcement-learning</a></p>
+
+          
+          
+        </div>
+      </div>
+      <div class="disqus">
+        
+      </div>
+    </div>
+  </div>
+
+    </div>
+    
+    <footer class="footer">
+  <div class="container">
+    <div class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+    <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+  </body>
+</html>

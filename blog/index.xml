@@ -6,14 +6,15 @@
     <description>Recent content in Blogs on Pierre Haou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 30 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://pierrehaou.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://pierrehaou.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First post coming soon!</title>
-      <link>https://pierrehaou.github.io/blog/first_blog/</link>
-      <pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Multi-Agent Reinforcement Learning (MARL) and Cooperative AI</title>
+      <link>https://pierrehaou.github.io/blog/marl/</link>
+      <pubDate>Sat, 15 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://pierrehaou.github.io/blog/first_blog/</guid>
-      <description>My first post is coming soon, for now enjoy one of my fav youtube videos!</description>
+      <guid>https://pierrehaou.github.io/blog/marl/</guid>
+      <description>Agents play hide and seek in OpenAI’s Emergent Tool Use from Multi-Agent Interaction. Gif by OpenAI.
+Multi-Agent Reinforcement Learning (MARL) is a subfield of reinforcement learning that is becoming increasingly relevant and has been blowing my mind (see gif and link above). It has found incredible success in popular strategy games and will be key to the continued advancement of several emerging technologies, communication between different autonomous vehicles being one such example.</description>
     </item>
     
   </channel>
