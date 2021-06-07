@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Pierre Haou">
+    <link rel="shortcut icon" type="image/x-icon" href="https://pierrehaou.github.io/img/favicon.ico">
+    <title>A Quick Primer on Self-Play in Deep Reinforcement Learning | Pierre Haou</title>
+    <meta name="description" content="&quot;Train tirelessly to defeat the greatest enemy, yourself, and to discover the greatest master, yourself&quot;
+ - Amituofo DeepMind has created AI that will crush any human player in Go, Chess, Shogi, and Starcraft 2.OpenAI has made similar strides in complex strategy games, notably in Dota 2. The agents in these games all achieved mastery using deep reinforcement learning. Yet, this is only part of the story. What was the magic sauce that sent these systems&#39; playing ability out of the atmosphere?">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <link rel="preload stylesheet" href="/css/main.min.css" as="style">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,200bold,400old">
+    
+    <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+  </head>
+  <body>
+    <div id="content">
+  
+  <div class="container mb-3">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://pierrehaou.github.io/">
+        <i class="fa fa-home"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/about/">ABOUT</a></li>
+              </li>
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/blog/">BLOG</a></li>
+              </li>
+            
+              <li class="nav-item">
+                <li><a class="nav-link" href="/projects/">PROJECTS</a></li>
+              </li>
+            
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container">
+    <h3 class="mt-3"><b><a href="https://pierrehaou.github.io/blog/selfplay/">A Quick Primer on Self-Play in Deep Reinforcement Learning</a></b></h3>
+    <div class="blog-title my-4">
+      <h6>
+        June 6, 2021
+        &nbsp;&nbsp;
+        
+      </h6>
+    </div>
+    <div class="panel">
+      <div class="panel-body">
+        <div class="blogpost">
+          <p><img src="/img/spidermanmeme.jpg" alt="Spiderman meme"></p>
+<p><em>&quot;Train tirelessly to defeat the greatest enemy, yourself, and to discover the greatest master, yourself&quot;</em></p>
+<pre><code>                            - Amituofo
+</code></pre>
+<p>DeepMind has created AI that will crush any human player in <a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch">Go</a>, Chess, Shogi, and <a href="https://deepmind.com/blog/article/alphastar-mastering-real-time-strategy-game-starcraft-ii">Starcraft 2.</a>OpenAI has made similar strides in complex strategy games, notably in <a href="https://openai.com/blog/openai-five/">Dota 2</a>. The agents in these games all achieved mastery using deep reinforcement learning. Yet, this is only part of the story. What was the magic sauce that sent these systems' playing ability out of the atmosphere? A simple framework called self-play, where your opponent is yourself.</p>
+<h4 id="what-is-self-play"><strong>What is self play?</strong></h4>
+<p>Self-play is a framework where an agent learns to play a game by playing against itself. That is, when an agent is training, it uses its current and past selves as sparring partners. DeepMind's <a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch">AlphaGo Zero</a> used this technique. AlphaGo Zero, the reinforcement learning agent, learned to master Go by playing against itself—AlphaGo Zero. This contrasts with the original AlphaGo which learned against expert human players.</p>
+<h4 id="why-does-this-change-the-game"><strong>Why does this change the game?</strong></h4>
+<p>Self-play is revolutionary; I will discuss <em>just</em> two reasons why. First, it eliminates human bias. Consider the original AlphaGo which trained against expert human Go players. While this original model became exceptional at Go, its moves were limited by an expert human's understanding of the game. What exactly do I mean by that? Well, by playing against expert human players, AlphaGo's data was limited and biased. Expert human players, although excellent at the game, bring certain assumptions to the table by virtue of being human. In other words, humans play Go in a human like way, and that might not be the optimal way to play the game. An agent that plays against itself unleashes creativity that is unconstrained by human bias or assumptions. This liberation has led AI to develop innovative and brilliant strategies unseen by human experts. AlphaGo Zero's Go strategy was so creative, innovative, and foreign professional Go player Mok Jin-seok described his experience with AlphaGo Zero as like playing against an alien.</p>
+<p>Besides unconstrained creativity, self-play can be a mechanism to solve <a href="https://arxiv.org/pdf/1903.00742.pdf">The Problem Problem.</a>—an obstacle in AI research. As an agent continues to improve in an environment, its progress can be slowed by that very environment becoming less challenging. In response, researchers and engineers must design a more difficult environment to get the agent to improve. That is, the rate at which an agent can improve is limited by a researcher's ability to develop a novel and challenging environment. This is the Problem Problem.</p>
+<p>In the AlphaGo example, we can consider the 'environment' to include the game board and the expert Go opponent. Here, the agent's progress is limited by the skill of the Go opponent. In one sense, once the algorithm is better than these expert players, it can be difficult for it to continue to improve. It is here that we run into The Problem Problem. But, self-play can be an antidote. In self-play the environment improves as the agent improves since the agent is playing against itself. This forms what is known as Autocurriculum—the idea of an environment that can change and improve based on how the agent interacts with it. In theory, Autocurriculum is only constrained by computation resources. While self-play faces challenges when attempting to solve The Problem Problem, it is a framework that has shown a ton of promise.</p>
+<h4 id="wrapping-it-up"><strong>Wrapping it up</strong></h4>
+<p>So far, we have touched on what self-play is, and why it is important. It would not be a Pierre post if I did not speculate <em>at least a little</em> on the potential of self-play going forward. Here are a couple questions that come to my mind when thinking about the future of self-play:</p>
+<ul>
+<li>
+<p>Where else can self-play be implemented to show humans a novel or innovative way of doing something?</p>
+</li>
+<li>
+<p>What other approaches exist in the universe that are impossible for humans to imagine?</p>
+</li>
+<li>
+<p>Could even <a href="https://en.wikipedia.org/wiki/Sun_Tzu">Sun Tzu</a> have learned something from one of these AI?</p>
+</li>
+<li>
+<p>What other domains can AI teach us a more optimal way of doing things?</p>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<p>[1]: Joel Z. Leibo, Edward Hughes, Marc Lanctot, and Thore Graepel, Autocurricula and the Emergence of Innovation from Social Interaction: A Manifesto for Multi-Agent Intelligence Research (2019), <a href="https://arxiv.org/abs/1903.00742">https://arxiv.org/abs/1903.00742</a></p>
+<p>[2]: David Silver and Demis Hassabis, AlphaGo Zero: Starting from Scratch (2017), <a href="https://deepmind.com/blog/article/alphago-zero-starting-scratch">https://deepmind.com/blog/article/alphago-zero-starting-scratch</a></p>
+
+          
+          
+        </div>
+      </div>
+      <div class="disqus">
+        
+      </div>
+    </div>
+  </div>
+
+    </div>
+    
+    <footer class="footer">
+  <div class="container">
+    <div class="text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io/">Hugo</a> and
+    <a href="http://www.github.com/nurlansu/hugo-sustain/">sustain</a> with ♥</div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+
+  </body>
+</html>
